@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <button id="addTrackBtn" class="login-btn">Add Song</button>
+
+    <h1>Top Hits of The Day 🎶</h1>
+  </header>
+
+  <main>
+    <div class="player-container">
+      <audio class="audio" src="2.mp3"></audio>
+      
+      <div class="player-left">
+        <div class="album-cover">
+          <img id="albumCover" src="1.jpg" alt="Album Cover">
+        </div>
+
+        <div class="track-info">
+          <h3 class="track-title">Dark Night Dreams</h3>
+          <p class="artist-name">KXRY</p>
+        </div>
+
+        <div class="volume-container">
+          <button id="volumeBtn">🔊</button>
+          <input type="range" id="volume" min="0" max="100" value="70">
+        </div>
+
+        <div class="controls">
+          <button class="prev">⏮</button>
+          <button class="play">▶️</button>
+          <button class="next">⏭</button>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+          <div class="time-display">00:00 / 03:15</div>
+        </div>
+      </div>
+
+      <aside class="playlist">
+        <h2>Playlist</h2>
+        <ul>
+          <li class="liclik" data-src="2.mp3">
+            <img src="2.jpg" alt="Track 1">
+            <div class="track-details">
+              <p class="track-name">Song One</p>
+              <p class="artist-name">Singer</p>
+              <p class="track-time">03:15</p>
+            </div>
+          </li>
+
+          <li class="liclik" data-src="3.mp3">
+            <img src="3.jpg" alt="Track 2">
+            <div class="track-details">
+              <p class="track-name">Song Two</p>
+              <p class="artist-name">Artist</p>
+              <p class="track-time">04:05</p>
+            </div>
+          </li>
+
+          <li class="liclik" data-src="3.mp3">
+            <img src="4.jpg" alt="Track 3">
+            <div class="track-details">
+              <p class="track-name">Song Three</p>
+              <p class="artist-name">Artist</p>
+              <p class="track-time">02:50</p>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <div class="music-eye">
+    <div class="pupil"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

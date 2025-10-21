@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  position: relative; /* برای قرارگیری چشم داخل هدر */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: rgba(20, 20, 20, 0.9);
+  border-bottom: 1px solid #333;
+  height: 60px;
+}
+
+header h1 {
+  font-size: 18px;
+  color: #cfcfcf;
+  text-transform: uppercase;
+}
+
+.login-btn {
+  background: transparent;
+  border: 1px solid #666;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #555;
+}
+
+/* Main Player + Playlist */
+.player-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* فاصله بین تصویر پلیر و پلی‌لیست */
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Player Left */
+.player-left {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+/* Album Cover */
+.album-cover img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+/* Track Info */
+.track-title {
+  font-size: 15px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0px;
+}
+
+.artist-name {
+  font-size: 14px;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0px;
+}
+
+/* Volume */
+.volume-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.volume-container input[type=range] {
+  -webkit-appearance: none;
+  width: 150px;
+  height: 6px;
+  background: linear-gradient(90deg, #0ff, #0f9);
+  border-radius: 5px;
+  outline: none;
+}
+
+.volume-container input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #0f9;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.volume-container input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.controls button {
+  background: #111;
+  color: #0f9;
+  border: 1px solid #0f9;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.controls button:hover {
+  background: #0f9;
+  color: #000;
+}
+
+/* Progress Bar */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress {
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, #0ff, #0f9);
+}
+
+.time-display {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Playlist Right */
+.playlist {
+  position: fixed; 
+  top: 60px;       /* پایین هدر */
+  right: 0;        /* کنار راست صفحه */
+  height: calc(100vh - 60px);
+  width: 250px;
+  overflow-y: auto;
+  background: rgba(25, 25, 25, 0.95);
+  border-radius: 15px 0 0 15px;
+  padding: 15px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.playlist h2 {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+}
+
+.playlist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.playlist ul li {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.playlist ul li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-name {
+  color: #fff;
+  font-size: 14px;
+ 
+}
+
+.track-time {
+  color: #aaa;
+  font-size: 9px;
+}
+
+.playlist ul li:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-radius: 8px;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar پلی‌لیست */
+.playlist::-webkit-scrollbar {
+  width: 10px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0ff, #0f9);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0f9, #0ff);
+}
+
+/* چشم روی هدر */
+.music-eye {
+  position: absolute; /* داخل هدر */
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px #0ff;
+  overflow: hidden; /* برای محدود کردن حرکت مردمک */
+  z-index: 1000;
+}
+
+.music-eye .pupil {
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.05s linear;
+}
+
+
+
+
+@keyframes look-around {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(10px, 0); }
+  50% { transform: translate(10px, 10px); }
+  75% { transform: translate(0, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
+
+
+.dancing-dude {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 100px;
+  transition: transform 0.1s ease-out;
+  z-index: 1000;
+}
+
+/* ✅ پایه (دسکتاپ به صورت پیش‌فرض) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* مثال برای هدر و منو */
+header {
+  background-color: #39FF14;
+  color: #000;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* ✅ برای تبلت‌ها (عرض بین 768 تا 1024px) */
+@media screen and (max-width: 1024px) {
+  header {
+    font-size: 22px;
+  }
+
+  nav {
+    gap: 10px;
+  }
+}
+
+/* ✅ برای موبایل‌ها (عرض کمتر از 768px) */
+@media screen and (max-width: 768px) {
+  header {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    padding: 8px 0;
+    font-size: 16px;
+  }
+}
+
+/* ------------------------------- */
+/* 🔹 ریسپانسیو برای تبلت‌ها (max-width: 1024px) */
+/* ------------------------------- */
+@media screen and (max-width: 1024px) {
+  .player-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .player-left {
+    width: 80%;
+  }
+
+  .playlist {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+}
+
+
+/* ------------------------------- */
+/* 🔹 ریسپانسیو برای موبایل‌ها (max-width: 768px) */
+/* ------------------------------- */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .login-btn {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .music-eye {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+  }
+
+  .music-eye .pupil {
+    width: 14px;
+    height: 14px;
+  }
+
+  .player-left {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .controls button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .volume-container input[type=range] {
+    width: 100px;
+  }
+
+  .playlist {
+    width: 95%;
+    margin-top: 15px;
+    position: relative;
+    height: auto;
+  }
+}
+
+
+/* ------------------------------- */
+/* 🔹 برای موبایل‌های خیلی کوچک (max-width: 480px) */
+/* ------------------------------- */
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 14px;
+  }
+
+  .track-title {
+    font-size: 13px;
+  }
+
+  .artist-name {
+    font-size: 12px;
+  }
+
+  .controls button {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  .playlist ul li img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .playlist h2 {
+    font-size: 16px;
+  }
+
+  .playlist ul li {
+    gap: 8px;
+  }
+}
